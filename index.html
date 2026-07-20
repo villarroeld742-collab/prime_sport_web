@@ -1,27 +1,386 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Prime Sports</title>
-<style>
-body{font-family:Arial,sans-serif;margin:0;background:#f5f5f5;color:#222}
-header{background:#111;color:#fff;padding:20px;text-align:center}
-.hero{padding:50px;text-align:center;background:#222;color:#fff}
-.btn{background:#e63946;color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:30px}
-.card{background:#fff;padding:15px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
-.price{color:#e63946;font-size:22px;font-weight:bold}
-footer{background:#111;color:#fff;text-align:center;padding:20px}
-</style></head>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRIME SPORT | Streetwear Premium</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0b0b0b;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* BANNER Y NAVEGACIÓN */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: #000;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #d4af37; /* Dorado */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('logo.jpg') center/contain no-repeat;
+            padding: 0 20px;
+            border-bottom: 1px solid #222;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 25px;
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, #d4af37, #f3e5ab);
+            color: #000;
+            padding: 12px 35px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .btn-main:hover {
+            opacity: 0.9;
+            transform: scale(1.03);
+        }
+
+        /* BENEFICIOS */
+        .features {
+            background-color: #111;
+            padding: 30px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+            border-bottom: 1px solid #222;
+        }
+
+        .feature-box h4 {
+            font-size: 1rem;
+            color: #d4af37;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .feature-box p {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* CATÁLOGO */
+        .catalog {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: #141414;
+            border: 1px solid #222;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+        }
+
+        .card img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            background-color: #1a1a1a;
+        }
+
+        .card-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .size-badge {
+            display: inline-block;
+            background-color: #222;
+            color: #aaa;
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+
+        .price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .btn-ws {
+            background-color: #25D366;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .btn-ws:hover {
+            background-color: #1eb954;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #000;
+            padding: 40px 5%;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 20px 0;
+        }
+
+        .socials a {
+            color: #aaa;
+            font-size: 1rem;
+        }
+
+        .socials a:hover {
+            color: #d4af37;
+        }
+
+        .copyright {
+            color: #555;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
 <body>
-<header><h1>PRIME SPORTS</h1><p>Streetwear Premium • Americana • Peruana</p></header>
-<section class="hero">
-<h2>Vístete diferente.</h2>
-<p>Poleras Boxy Fit, Hoodies Premium y ropa seleccionada.</p>
-<a class="btn" href="#catalogo">Ver catálogo</a>
-</section>
-<section id="catalogo" class="grid">
-<div class="card"><h3>Polera Boxy Fit</h3><p>Algodón peruano premium.</p><p class="price">Bs 170</p></div>
-<div class="card"><h3>Hoodie Streetwear</h3><p>Diseño moderno y cómodo.</p><p class="price">Bs 170</p></div>
-<div class="card"><h3>Americana Premium</h3><p>Prendas seleccionadas.</p><p class="price">Desde Bs 120</p></div>
-</section>
-<footer>WhatsApp: +591 ... | Instagram: @PrimeSports</footer>
-</body></html>
+
+    <!-- NAV BAR -->
+    <nav>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Prime Sport Logo" class="logo-img">
+            <span class="logo-text">PRIME SPORT</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#catalogo">Catálogo</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO / BANNER -->
+    <section class="hero">
+        <h1>VÍSTETE DIFERENTE</h1>
+        <p>Streetwear Premium • Colección Exclusiva</p>
+        <a href="#catalogo" class="btn-main">Ver Productos</a>
+    </section>
+
+    <!-- CARACTERÍSTICAS -->
+    <section class="features">
+        <div class="feature-box">
+            <h4>🚚 Envíos a todo el país</h4>
+            <p>Envíos inmediatos y seguros en Bolivia.</p>
+        </div>
+        <div class="feature-box">
+            <h4>🔥 Diseños Exclusivos</h4>
+            <p>Calidad y corte streetwear oversize/box fit.</p>
+        </div>
+        <div class="feature-box">
+            <h4>📲 Pedidos al instante</h4>
+            <p>Haz tu pedido directo por WhatsApp.</p>
+        </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section id="catalogo" class="catalog">
+        <h2 class="section-title">Colección Disponible</h2>
+        <div class="grid">
+
+            <!-- Hoodie Crema -->
+            <div class="card">
+                <img src="hoodie-crema.jpg" alt="Hoodie Crema Passion Racing">
+                <div class="card-info">
+                    <h3>Hoodie Crema Passion Racing</h3>
+                    <div class="size-badge">Tallas: L / XL</div>
+                    <div class="price">130 Bs</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20el%20Hoodie%20Crema%20Passion%20Racing%20(130%20Bs)" class="btn-ws" target="_blank">
+                        Pedir por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hoodie Negro LA -->
+            <div class="card">
+                <img src="hoodie-la.jpg" alt="Hoodie Negro Los Angeles">
+                <div class="card-info">
+                    <h3>Hoodie Negro Los Angeles</h3>
+                    <div class="size-badge">Talla: L</div>
+                    <div class="price">130 Bs</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20el%20Hoodie%20Negro%20Los%20Angeles%20(130%20Bs)" class="btn-ws" target="_blank">
+                        Pedir por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sweatshirt Mücent -->
+            <div class="card">
+                <img src="sweatshirt-mucent.jpg" alt="Polerón Negro Mücent">
+                <div class="card-info">
+                    <h3>Sweatshirt Negro Mücent</h3>
+                    <div class="size-badge">Talla: L</div>
+                    <div class="price">130 Bs</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20el%20Sweatshirt%20Negro%20Mücent%20(130%20Bs)" class="btn-ws" target="_blank">
+                        Pedir por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sweatshirt Field Master -->
+            <div class="card">
+                <img src="sweatshirt-field.jpg" alt="Sweatshirt Gris Field Master">
+                <div class="card-info">
+                    <h3>Sweatshirt Gris Field Master</h3>
+                    <div class="size-badge">Talla: L</div>
+                    <div class="price">130 Bs</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20el%20Sweatshirt%20Gris%20Field%20Master%20(130%20Bs)" class="btn-ws" target="_blank">
+                        Pedir por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sweatshirt Fila Italia -->
+            <div class="card">
+                <img src="sweatshirt-fila.jpg" alt="Sweatshirt Amarillo Fila Italia">
+                <div class="card-info">
+                    <h3>Sweatshirt Amarillo Fila Italia</h3>
+                    <div class="size-badge">Talla: L</div>
+                    <div class="price">130 Bs</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20el%20Sweatshirt%20Amarillo%20Fila%20Italia%20(130%20Bs)" class="btn-ws" target="_blank">
+                        Pedir por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contacto">
+        <div class="logo-container" style="justify-content: center; margin-bottom: 15px;">
+            <img src="logo.jpg" alt="Prime Sport Logo" class="logo-img">
+            <span class="logo-text">PRIME SPORT</span>
+        </div>
+        <p style="color: #777;">Streetwear Premium • Vístete diferente</p>
+        <div class="socials">
+            <a href="https://wa.me/59174186562" target="_blank">WhatsApp Directo (+591 74186562)</a>
+            <a href="https://instagram.com/PrimeSports" target="_blank">Instagram</a>
+        </div>
+        <p class="copyright">&copy; Prime Sport. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
