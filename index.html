@@ -67,13 +67,13 @@
 
         /* HERO SECTION */
         .hero {
-            height: 70vh;
+            height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('logo.jpg') center/contain no-repeat;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('logo.jpg') center/contain no-repeat;
             padding: 0 20px;
             border-bottom: 1px solid #222;
         }
@@ -130,9 +130,9 @@
             color: #888;
         }
 
-        /* CATÁLOGO */
+        /* CATÁLOGO Y FILTROS */
         .catalog {
-            padding: 60px 5%;
+            padding: 50px 5%;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -142,9 +142,36 @@
             font-size: 2rem;
             text-transform: uppercase;
             letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        /* BOTONES DE CATEGORÍAS */
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
             margin-bottom: 40px;
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .cat-btn {
+            background-color: #1a1a1a;
+            color: #ccc;
+            border: 1px solid #333;
+            padding: 10px 22px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .cat-btn.active, .cat-btn:hover {
+            background: #d4af37;
+            color: #000;
+            border-color: #d4af37;
         }
 
         .grid {
@@ -161,6 +188,10 @@
             transition: transform 0.3s, border-color 0.3s;
             display: flex;
             flex-direction: column;
+        }
+
+        .card.hidden {
+            display: none;
         }
 
         .card:hover {
@@ -236,11 +267,16 @@
             justify-content: center;
             gap: 25px;
             margin: 20px 0;
+            flex-wrap: wrap;
         }
 
         .socials a {
             color: #aaa;
             font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
         }
 
         .socials a:hover {
@@ -250,6 +286,7 @@
         .copyright {
             color: #555;
             font-size: 0.8rem;
+            margin-top: 15px;
         }
 
         @media (max-width: 768px) {
@@ -275,7 +312,7 @@
     <!-- HERO / BANNER -->
     <section class="hero">
         <h1>VÍSTETE DIFERENTE</h1>
-        <p>Streetwear Premium • Colección Exclusiva</p>
+        <p>Hoodies • Zapatos de Marca • Poleras Boxy Fit</p>
         <a href="#catalogo" class="btn-main">Ver Productos</a>
     </section>
 
@@ -287,7 +324,7 @@
         </div>
         <div class="feature-box">
             <h4>🔥 Diseños Exclusivos</h4>
-            <p>Calidad y corte streetwear oversize/box fit.</p>
+            <p>Calidad premium streetwear y de marca.</p>
         </div>
         <div class="feature-box">
             <h4>📲 Pedidos al instante</h4>
@@ -295,13 +332,22 @@
         </div>
     </section>
 
-    <!-- CATÁLOGO -->
+    <!-- CATÁLOGO CON CATEGORÍAS -->
     <section id="catalogo" class="catalog">
-        <h2 class="section-title">Colección Disponible</h2>
+        <h2 class="section-title">Colección Exclusiva</h2>
+
+        <!-- BOTONES DE FILTRO -->
+        <div class="category-buttons">
+            <button class="cat-btn active" onclick="filterCategory('all')">Todos</button>
+            <button class="cat-btn" onclick="filterCategory('hoodies')">Hoodies & Polerones</button>
+            <button class="cat-btn" onclick="filterCategory('boxy')">Poleras Boxy Fit</button>
+            <button class="cat-btn" onclick="filterCategory('zapatos')">Zapatos de Marca</button>
+        </div>
+
         <div class="grid">
 
-            <!-- Hoodie Crema -->
-            <div class="card">
+            <!-- HOODIES & SWEATSHIRTS -->
+            <div class="card" data-category="hoodies">
                 <img src="hoodie-crema.jpg" alt="Hoodie Crema Passion Racing">
                 <div class="card-info">
                     <h3>Hoodie Crema Passion Racing</h3>
@@ -313,8 +359,7 @@
                 </div>
             </div>
 
-            <!-- Hoodie Negro LA -->
-            <div class="card">
+            <div class="card" data-category="hoodies">
                 <img src="hoodie-la.jpg" alt="Hoodie Negro Los Angeles">
                 <div class="card-info">
                     <h3>Hoodie Negro Los Angeles</h3>
@@ -326,8 +371,7 @@
                 </div>
             </div>
 
-            <!-- Sweatshirt Mücent -->
-            <div class="card">
+            <div class="card" data-category="hoodies">
                 <img src="sweatshirt-mucent.jpg" alt="Polerón Negro Mücent">
                 <div class="card-info">
                     <h3>Sweatshirt Negro Mücent</h3>
@@ -339,8 +383,7 @@
                 </div>
             </div>
 
-            <!-- Sweatshirt Field Master -->
-            <div class="card">
+            <div class="card" data-category="hoodies">
                 <img src="sweatshirt-field.jpg" alt="Sweatshirt Gris Field Master">
                 <div class="card-info">
                     <h3>Sweatshirt Gris Field Master</h3>
@@ -352,8 +395,7 @@
                 </div>
             </div>
 
-            <!-- Sweatshirt Fila Italia -->
-            <div class="card">
+            <div class="card" data-category="hoodies">
                 <img src="sweatshirt-fila.jpg" alt="Sweatshirt Amarillo Fila Italia">
                 <div class="card-info">
                     <h3>Sweatshirt Amarillo Fila Italia</h3>
@@ -361,6 +403,32 @@
                     <div class="price">130 Bs</div>
                     <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20el%20Sweatshirt%20Amarillo%20Fila%20Italia%20(130%20Bs)" class="btn-ws" target="_blank">
                         Pedir por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- POLERAS BOXY FIT (Plantilla para cuando subas fotos) -->
+            <div class="card" data-category="boxy">
+                <img src="logo.jpg" alt="Polera Boxy Fit Prime Sport">
+                <div class="card-info">
+                    <h3>Poleras Boxy Fit Premium</h3>
+                    <div class="size-badge">Algodón Heavyweight</div>
+                    <div class="price">Consultar Catálogo</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Quiero%20ver%20los%20modelos%20disponibles%20de%20Poleras%20Boxy%20Fit" class="btn-ws" target="_blank">
+                        Consultar Modelos
+                    </a>
+                </div>
+            </div>
+
+            <!-- ZAPATOS DE MARCA (Plantilla para cuando subas fotos) -->
+            <div class="card" data-category="zapatos">
+                <img src="logo.jpg" alt="Zapatos de Marca Prime Sport">
+                <div class="card-info">
+                    <h3>Zapatos de Marca Seleccionados</h3>
+                    <div class="size-badge">Modelos Exclusivos</div>
+                    <div class="price">Consultar Tallas</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Quiero%20ver%20el%20catálogo%20de%20Zapatos%20de%20Marca" class="btn-ws" target="_blank">
+                        Consultar Catálogo
                     </a>
                 </div>
             </div>
@@ -375,12 +443,36 @@
             <span class="logo-text">PRIME SPORT</span>
         </div>
         <p style="color: #777;">Streetwear Premium • Vístete diferente</p>
+        
         <div class="socials">
-            <a href="https://wa.me/59174186562" target="_blank">WhatsApp Directo (+591 74186562)</a>
-            <a href="https://instagram.com/PrimeSports" target="_blank">Instagram</a>
+            <a href="https://wa.me/59174186562" target="_blank">💬 WhatsApp (+591 74186562)</a>
+            <a href="https://www.instagram.com/j.primesport?igsh=MTh0b2I2YmNoeTQ5aQ%3D%3D&utm_source=qr" target="_blank">📸 Instagram (@j.primesport)</a>
+            <a href="https://www.facebook.com/share/194xvb2WLN/?mibextid=wwXIfr" target="_blank">📘 Facebook</a>
         </div>
+        
         <p class="copyright">&copy; Prime Sport. Todos los derechos reservados.</p>
     </footer>
+
+    <!-- SCRIPT DE FILTRADO DE CATEGORÍAS -->
+    <script>
+        function filterCategory(category) {
+            const cards = document.querySelectorAll('.card');
+            const buttons = document.querySelectorAll('.cat-btn');
+
+            // Cambiar clase activa en botones
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filtrar productos
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
