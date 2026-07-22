@@ -4,18 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PRIME SPORT | Streetwear Premium</title>
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --bg-black: #050505;
+            --bg-card: #0f0f0f;
+            --gold-main: #c9a050;
+            --gold-light: #e2c075;
+            --text-gray: #a0a0a0;
+            --border-color: #222222;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
         }
 
         body {
-            background-color: #0b0b0b;
-            color: #f5f5f5;
-            line-height: 1.6;
+            background-color: var(--bg-black);
+            color: #ffffff;
+            line-height: 1.5;
         }
 
         a {
@@ -23,598 +34,809 @@
             color: inherit;
         }
 
-        /* BANNER Y NAVEGACIÓN */
+        /* NAVEGACIÓN HEADER */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
-            background-color: #000;
+            padding: 18px 6%;
+            background-color: rgba(5, 5, 5, 0.95);
             position: sticky;
             top: 0;
-            z-index: 100;
-            border-bottom: 1px solid #222;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .logo-img {
-            height: 45px;
+            height: 40px;
             width: auto;
-            object-fit: contain;
         }
 
-        .logo-text {
-            font-size: 1.4rem;
+        .logo-text-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.3rem;
             font-weight: 900;
             letter-spacing: 2px;
-            color: #d4af37; /* Dorado */
+            color: #fff;
+            line-height: 1;
+        }
+
+        .logo-title span {
+            color: var(--gold-main);
+        }
+
+        .logo-subtitle {
+            font-size: 0.55rem;
+            letter-spacing: 3px;
+            color: var(--text-gray);
+            margin-top: 3px;
+            text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 30px;
             list-style: none;
         }
 
-        .nav-links a:hover {
-            color: #d4af37;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('logo.jpg') center/contain no-repeat;
-            padding: 0 20px;
-            border-bottom: 1px solid #222;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #ccc;
-            margin-bottom: 25px;
-        }
-
-        .btn-main {
-            background: linear-gradient(135deg, #d4af37, #f3e5ab);
-            color: #000;
-            padding: 12px 35px;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 4px;
+            letter-spacing: 1.5px;
             transition: 0.3s;
         }
 
-        .btn-main:hover {
-            opacity: 0.9;
-            transform: scale(1.03);
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold-main);
         }
 
-        /* BENEFICIOS */
-        .features {
-            background-color: #111;
-            padding: 30px 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        .nav-icons {
+            display: flex;
             gap: 20px;
-            text-align: center;
-            border-bottom: 1px solid #222;
+            font-size: 1.1rem;
+            color: #fff;
         }
 
-        .feature-box h4 {
-            font-size: 1rem;
-            color: #d4af37;
-            margin-bottom: 5px;
+        .nav-icons i {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nav-icons i:hover {
+            color: var(--gold-main);
+        }
+
+        /* HERO BANNER PRINCIPAL */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            background: linear-gradient(90deg, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.7) 50%, rgba(5,5,5,0.3) 100%), url('hero-banner.jpg') center/cover no-repeat;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Fallback si no hay hero-banner.jpg */
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-tag {
+            color: var(--gold-main);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
             text-transform: uppercase;
         }
 
-        .feature-box p {
-            font-size: 0.85rem;
-            color: #888;
+        .hero-title span {
+            color: var(--gold-main);
+            display: block;
         }
 
-        /* CATÁLOGO Y FILTROS */
-        .catalog {
-            padding: 50px 5%;
-            max-width: 1200px;
+        .hero-subtitle {
+            font-size: 1rem;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .btn-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--gold-main), var(--gold-light));
+            color: #000;
+            padding: 14px 32px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(201, 160, 80, 0.2);
+        }
+
+        /* BENEFICIOS / BARRA DE VALOR */
+        .value-bar {
+            background-color: #000;
+            padding: 35px 8%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .value-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            color: var(--gold-main);
+            background: rgba(201, 160, 80, 0.08);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(201, 160, 80, 0.2);
+        }
+
+        .value-text h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 800;
+        }
+
+        .value-text p {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+
+        /* SECCIÓN CATÁLOGO */
+        .catalog-section {
+            padding: 70px 8%;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .section-title {
+        .section-header {
             text-align: center;
-            font-size: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
-        /* BOTONES DE CATEGORÍAS */
-        .category-buttons {
+        .section-header h2 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .section-header .line {
+            width: 60px;
+            height: 3px;
+            background-color: var(--gold-main);
+            margin: 0 auto;
+        }
+
+        /* CATEGORÍAS FILTRO */
+        .category-tabs {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
+            gap: 12px;
+            margin-bottom: 45px;
             flex-wrap: wrap;
         }
 
-        .cat-btn {
-            background-color: #1a1a1a;
-            color: #ccc;
-            border: 1px solid #333;
-            padding: 10px 22px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
+        .tab-btn {
+            background-color: #0d0d0d;
+            color: var(--text-gray);
+            border: 1px solid var(--border-color);
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
             text-transform: uppercase;
-            font-size: 0.85rem;
             letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        .cat-btn.active, .cat-btn:hover {
-            background: #d4af37;
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--gold-main);
             color: #000;
-            border-color: #d4af37;
+            border-color: var(--gold-main);
         }
 
-        .grid {
+        /* GRID PRODUCTOS */
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
             gap: 30px;
         }
 
-        .card {
-            background-color: #141414;
-            border: 1px solid #222;
+        .product-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             overflow: hidden;
-            transition: transform 0.3s, border-color 0.3s;
+            transition: 0.3s;
             display: flex;
             flex-direction: column;
+            text-align: center;
+            padding-bottom: 20px;
         }
 
-        .card.hidden {
+        .product-card.hidden {
             display: none;
         }
 
-        .card:hover {
+        .product-card:hover {
+            border-color: var(--gold-main);
             transform: translateY(-5px);
-            border-color: #d4af37;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
-        .card img {
+        .product-img-wrapper {
             width: 100%;
-            height: 340px;
-            object-fit: cover;
-            background-color: #1a1a1a;
+            height: 320px;
+            overflow: hidden;
+            background-color: #141414;
+            position: relative;
         }
 
-        .card-info {
-            padding: 20px;
+        .product-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .product-card:hover .product-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px 15px 10px 15px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
+            justify-content: space-between;
         }
 
-        .card-info h3 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
+        .product-title {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            color: #fff;
         }
 
-        .size-badge {
-            display: inline-block;
-            background-color: #222;
-            color: #d4af37;
-            font-size: 0.8rem;
-            padding: 4px 8px;
-            border-radius: 4px;
+        .product-size {
+            font-size: 0.75rem;
+            color: var(--gold-main);
+            font-weight: 600;
             margin-bottom: 12px;
-            width: fit-content;
-            font-weight: bold;
+            letter-spacing: 1px;
         }
 
-        .price {
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-bottom: 15px;
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 800;
             color: #fff;
+            margin-bottom: 18px;
         }
 
-        .btn-ws {
-            background-color: #25D366;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
+        .btn-ws-card {
+            border: 1px solid var(--gold-main);
+            color: var(--gold-main);
+            background: transparent;
+            padding: 10px 15px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             border-radius: 4px;
-            font-weight: bold;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-            margin-top: auto;
+            transition: 0.3s;
+            margin: 0 15px;
         }
 
-        .btn-ws:hover {
-            background-color: #1eb954;
+        .btn-ws-card:hover {
+            background-color: var(--gold-main);
+            color: #000;
+        }
+
+        /* SECCIÓN NOSOTROS BANNER */
+        .about-banner {
+            background: linear-gradient(180deg, rgba(15,15,15,0.9) 0%, rgba(5,5,5,1) 100%), url('logo.jpg') center/cover no-repeat;
+            padding: 60px 8%;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin: 40px auto 70px auto;
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-content h4 {
+            color: var(--gold-main);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .about-content p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            max-width: 650px;
         }
 
         /* FOOTER */
         footer {
             background-color: #000;
-            padding: 40px 5%;
-            text-align: center;
-            border-top: 1px solid #222;
+            border-top: 1px solid var(--border-color);
+            padding: 60px 8% 30px 8%;
         }
 
-        .socials {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin: 20px 0;
-            flex-wrap: wrap;
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
-        .socials a {
-            color: #aaa;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .footer-col h5 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-gray);
+            font-size: 0.85rem;
             transition: 0.3s;
         }
 
-        .socials a:hover {
-            color: #d4af37;
+        .footer-col ul li a:hover {
+            color: var(--gold-main);
         }
 
-        .copyright {
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            border-color: var(--gold-main);
+            color: var(--gold-main);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #111;
             color: #555;
-            font-size: 0.8rem;
-            margin-top: 15px;
+            font-size: 0.75rem;
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
+            .hero-title { font-size: 2.5rem; }
             .nav-links { display: none; }
+            .about-banner { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAV BAR -->
+    <!-- NAV BAR HEADER -->
     <nav>
         <div class="logo-container">
-            <img src="logo.jpg" alt="Prime Sport Logo" class="logo-img">
-            <span class="logo-text">PRIME SPORT</span>
+            <img src="logo.jpg" alt="Prime Sport" class="logo-img">
+            <div class="logo-text-box">
+                <span class="logo-title">PRIME <span>SPORT</span></span>
+                <span class="logo-subtitle">Streetwear Premium</span>
+            </div>
         </div>
         <ul class="nav-links">
-            <li><a href="#catalogo">Catálogo</a></li>
+            <li><a href="#inicio" class="active">Inicio</a></li>
+            <li><a href="#catalogo">Productos</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
             <li><a href="#contacto">Contacto</a></li>
         </ul>
+        <div class="nav-icons">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-bag-shopping"></i>
+        </div>
     </nav>
 
-    <!-- HERO / BANNER -->
-    <section class="hero">
-        <h1>VÍSTETE DIFERENTE</h1>
-        <p>Hoodies • Zapatos de Marca • Poleras Boxy Fit</p>
-        <a href="#catalogo" class="btn-main">Ver Productos</a>
-    </section>
-
-    <!-- CARACTERÍSTICAS -->
-    <section class="features">
-        <div class="feature-box">
-            <h4>🚚 Envíos a todo el país</h4>
-            <p>Envíos inmediatos y seguros en Bolivia.</p>
-        </div>
-        <div class="feature-box">
-            <h4>🔥 Diseños Exclusivos</h4>
-            <p>Calidad premium streetwear y de marca.</p>
-        </div>
-        <div class="feature-box">
-            <h4>📲 Pedidos al instante</h4>
-            <p>Haz tu pedido directo por WhatsApp.</p>
+    <!-- HERO BANNER -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <p class="hero-tag">Exclusividad. Calidad. Actitud.</p>
+            <h1 class="hero-title">PRIME <span>SPORT</span></h1>
+            <p class="hero-subtitle">Ropa y calzado seleccionados para quienes viven el deporte y el estilo con actitud única.</p>
+            <a href="#catalogo" class="btn-gold">
+                Comprar Ahora <i class="fa-solid fa-arrow-right"></i>
+            </a>
         </div>
     </section>
 
-    <!-- CATÁLOGO CON CATEGORÍAS -->
-    <section id="catalogo" class="catalog">
-        <h2 class="section-title">Colección Exclusiva</h2>
+    <!-- BENEFICIOS / BARRA DE VALOR -->
+    <section class="value-bar">
+        <div class="value-item">
+            <div class="value-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="value-text">
+                <h4>Calidad Premium</h4>
+                <p>Productos seleccionados con los mejores estándares.</p>
+            </div>
+        </div>
+        <div class="value-item">
+            <div class="value-icon"><i class="fa-solid fa-truck-fast"></i></div>
+            <div class="value-text">
+                <h4>Envíos a toda Bolivia</h4>
+                <p>Recibe tu pedido seguro en cualquier ciudad.</p>
+            </div>
+        </div>
+        <div class="value-item">
+            <div class="value-icon"><i class="fa-solid fa-headset"></i></div>
+            <div class="value-text">
+                <h4>Atención Personalizada</h4>
+                <p>Te ayudamos a elegir lo que mejor va contigo.</p>
+            </div>
+        </div>
+    </section>
 
-        <!-- BOTONES DE FILTRO -->
-        <div class="category-buttons">
-            <button class="cat-btn active" onclick="filterCategory('all')">Todos</button>
-            <button class="cat-btn" onclick="filterCategory('hoodies')">Hoodies & Chaquetas</button>
-            <button class="cat-btn" onclick="filterCategory('boxy')">Poleras</button>
-            <button class="cat-btn" onclick="filterCategory('zapatos')">Zapatos de Marca</button>
+    <!-- CATÁLOGO DE PRODUCTOS DESTACADOS -->
+    <section id="catalogo" class="catalog-section">
+        <div class="section-header">
+            <h2>Productos Destacados</h2>
+            <div class="line"></div>
         </div>
 
-        <div class="grid">
+        <!-- TABS DE CATEGORÍAS -->
+        <div class="category-tabs">
+            <button class="tab-btn active" onclick="filterCategory('all')">Todos</button>
+            <button class="tab-btn" onclick="filterCategory('hoodies')">Hoodies & Chaquetas</button>
+            <button class="tab-btn" onclick="filterCategory('boxy')">Poleras</button>
+            <button class="tab-btn" onclick="filterCategory('zapatos')">Sneakers / Zapatos</button>
+        </div>
 
-            <!-- HOODIES, CHAQUETAS & ROMPEVIENTOS -->
-            <div class="card" data-category="hoodies">
-                <img src="rompeviento-nike.jpg" alt="Rompeviento Nike Shox R4">
-                <div class="card-info">
-                    <h3>Rompeviento Nike Shox R4 Beige</h3>
-                    <div class="size-badge">Talla: XL</div>
-                    <div class="price">180 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20el%20Rompeviento%20Nike%20Shox%20R4%20(180%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
+        <!-- GRID DE PRODUCTOS -->
+        <div class="product-grid">
+
+            <!-- HOODIES Y CHAQUETAS -->
+            <div class="product-card" data-category="hoodies">
+                <div class="product-img-wrapper">
+                    <img src="rompeviento-nike.jpg" alt="Rompeviento Nike Shox R4">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Rompeviento Nike Shox R4</h3>
+                    <p class="product-size">Talla: XL</p>
+                    <div class="product-price">Bs. 180</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20el%20Rompeviento%20Nike%20Shox%20R4%20(180%20Bs)" class="btn-ws-card" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <div class="card" data-category="hoodies">
-                <img src="rompeviento-mercedes.jpg" alt="Rompeviento Mercedes-Benz">
-                <div class="card-info">
-                    <h3>Rompeviento Mercedes-Benz Azul</h3>
-                    <div class="size-badge">Talla: L</div>
-                    <div class="price">150 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20el%20Rompeviento%20Mercedes-Benz%20(150%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
+            <div class="product-card" data-category="hoodies">
+                <div class="product-img-wrapper">
+                    <img src="rompeviento-mercedes.jpg" alt="Rompeviento Mercedes-Benz">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Rompeviento Mercedes-Benz</h3>
+                    <p class="product-size">Talla: L</p>
+                    <div class="product-price">Bs. 150</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20el%20Rompeviento%20Mercedes-Benz%20(150%20Bs)" class="btn-ws-card" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <div class="card" data-category="hoodies">
-                <img src="hoodie-rosa.jpg" alt="Hoodie Rosa Brave and Fearless">
-                <div class="card-info">
-                    <h3>Hoodie Rosa Brave and Fearless</h3>
-                    <div class="size-badge">Talla: L</div>
-                    <div class="price">130 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20el%20Hoodie%20Rosa%20Brave%20and%20Fearless%20(130%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
+            <div class="product-card" data-category="hoodies">
+                <div class="product-img-wrapper">
+                    <img src="hoodie-rosa.jpg" alt="Hoodie Rosa Brave and Fearless">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Hoodie Rosa Fearless</h3>
+                    <p class="product-size">Talla: L</p>
+                    <div class="product-price">Bs. 130</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20el%20Hoodie%20Rosa%20Brave%20and%20Fearless%20(130%20Bs)" class="btn-ws-card" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <div class="card" data-category="hoodies">
-                <img src="chaqueta-varsity.jpg" alt="Chaqueta Varsity Universitario">
-                <div class="card-info">
-                    <h3>Chaqueta Varsity Universitario</h3>
-                    <div class="size-badge">Talla: XL</div>
-                    <div class="price">250 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20la%20Chaqueta%20Varsity%20Universitario%20(250%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
+            <div class="product-card" data-category="hoodies">
+                <div class="product-img-wrapper">
+                    <img src="chaqueta-varsity.jpg" alt="Chaqueta Varsity Universitario">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Chaqueta Varsity</h3>
+                    <p class="product-size">Talla: XL</p>
+                    <div class="product-price">Bs. 250</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20la%20Chaqueta%20Varsity%20Universitario%20(250%20Bs)" class="btn-ws-card" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <div class="card" data-category="hoodies">
-                <img src="hoodie-crema.jpg" alt="Hoodie Crema Passion Racing">
-                <div class="card-info">
-                    <h3>Hoodie Crema Passion Racing</h3>
-                    <div class="size-badge">Tallas: L / XL</div>
-                    <div class="price">130 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20el%20Hoodie%20Crema%20Passion%20Racing%20(130%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
+            <div class="product-card" data-category="hoodies">
+                <div class="product-img-wrapper">
+                    <img src="hoodie-crema.jpg" alt="Hoodie Crema Passion Racing">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Hoodie Passion Racing</h3>
+                    <p class="product-size">Tallas: L / XL</p>
+                    <div class="product-price">Bs. 130</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20el%20Hoodie%20Crema%20Passion%20Racing%20(130%20Bs)" class="btn-ws-card" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <div class="card" data-category="hoodies">
-                <img src="hoodie-la.jpg" alt="Hoodie Negro Los Angeles">
-                <div class="card-info">
-                    <h3>Hoodie Negro Los Angeles</h3>
-                    <div class="size-badge">Talla: L</div>
-                    <div class="price">130 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20el%20Hoodie%20Negro%20Los%20Angeles%20(130%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
+            <!-- POLERAS -->
+            <div class="product-card" data-category="boxy">
+                <div class="product-img-wrapper">
+                    <img src="polera-adidas-deportiva.jpg" alt="Polera Polo Adidas">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Polo Adidas Deportiva</h3>
+                    <p class="product-size">Talla: M</p>
+                    <div class="product-price">Bs. 150</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20la%20Polera%20Polo%20Adidas%20Deportiva%20(150%20Bs)" class="btn-ws-card" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <div class="card" data-category="hoodies">
-                <img src="sweatshirt-mucent.jpg" alt="Polerón Negro Mücent">
-                <div class="card-info">
-                    <h3>Sweatshirt Negro Mücent</h3>
-                    <div class="size-badge">Talla: L</div>
-                    <div class="price">130 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20el%20Sweatshirt%20Negro%20Mücent%20(130%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
+            <div class="product-card" data-category="boxy">
+                <div class="product-img-wrapper">
+                    <img src="polera-blanca.jpg" alt="Polera Boxy Fit Blanca Security">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Boxy Fit Blanca Security</h3>
+                    <p class="product-size">Talla: M</p>
+                    <div class="product-price">Bs. 170</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20la%20Polera%20Boxy%20Fit%20Blanca%20Security%20(170%20Bs)" class="btn-ws-card" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <div class="card" data-category="hoodies">
-                <img src="sweatshirt-field.jpg" alt="Sweatshirt Gris Field Master">
-                <div class="card-info">
-                    <h3>Sweatshirt Gris Field Master</h3>
-                    <div class="size-badge">Talla: L</div>
-                    <div class="price">130 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20el%20Sweatshirt%20Gris%20Field%20Master%20(130%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
+            <div class="product-card" data-category="boxy">
+                <div class="product-img-wrapper">
+                    <img src="polera-cafe.jpg" alt="Polera Boxy Fit Café Wilder">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Boxy Fit Café Wilder</h3>
+                    <p class="product-size">Talla: L</p>
+                    <div class="product-price">Bs. 170</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20la%20Polera%20Boxy%20Fit%20Café%20Wilder%20(170%20Bs)" class="btn-ws-card" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <div class="card" data-category="hoodies">
-                <img src="sweatshirt-fila.jpg" alt="Sweatshirt Amarillo Fila Italia">
-                <div class="card-info">
-                    <h3>Sweatshirt Amarillo Fila Italia</h3>
-                    <div class="size-badge">Talla: L</div>
-                    <div class="price">130 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20el%20Sweatshirt%20Amarillo%20Fila%20Italia%20(130%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
+            <div class="product-card" data-category="boxy">
+                <div class="product-img-wrapper">
+                    <img src="polera-ploma.jpg" alt="Polera Boxy Fit Ploma">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Boxy Fit Ploma Care</h3>
+                    <p class="product-size">Talla: M</p>
+                    <div class="product-price">Bs. 170</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20la%20Polera%20Boxy%20Fit%20Ploma%20I%20Don't%20Care%20(170%20Bs)" class="btn-ws-card" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <!-- POLERAS (BOXY FIT & DEPORTIVAS) -->
-            <div class="card" data-category="boxy">
-                <img src="polera-adidas-deportiva.jpg" alt="Polera Polo Adidas Deportiva">
-                <div class="card-info">
-                    <h3>Polera Polo Adidas Deportiva</h3>
-                    <div class="size-badge">Talla: M • Edición Deportiva</div>
-                    <div class="price">150 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20la%20Polera%20Polo%20Adidas%20Deportiva%20(150%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
+            <!-- SNEAKERS / ZAPATOS -->
+            <div class="product-card" data-category="zapatos">
+                <div class="product-img-wrapper">
+                    <img src="zapato-nb-blanco.jpg" alt="New Balance Running White">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">New Balance Running White</h3>
+                    <p class="product-size">43 EUR • 9.5 US • 27.5 cm</p>
+                    <div class="product-price">Bs. 350</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesan%20los%20New%20Balance%20White%20Talla%2043%20EUR%20(350%20Bs)" class="btn-ws-card" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <div class="card" data-category="boxy">
-                <img src="polera-blanca.jpg" alt="Polera Boxy Fit Blanca Security">
-                <div class="card-info">
-                    <h3>Polera Boxy Fit Blanca Security</h3>
-                    <div class="size-badge">Talla: M</div>
-                    <div class="price">170 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20la%20Polera%20Boxy%20Fit%20Blanca%20Security%20(170%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
+            <div class="product-card" data-category="zapatos">
+                <div class="product-img-wrapper">
+                    <img src="zapato-nike-trail.jpg" alt="Nike ZoomX Trail">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Nike ZoomX Trail</h3>
+                    <p class="product-size">40 EUR (7 US) / 44 EUR (10 US)</p>
+                    <div class="product-price">Bs. 350</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesan%20los%20Nike%20ZoomX%20Trail%20(350%20Bs)" class="btn-ws-card" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <div class="card" data-category="boxy">
-                <img src="polera-cafe.jpg" alt="Polera Boxy Fit Café Wilder">
-                <div class="card-info">
-                    <h3>Polera Boxy Fit Café Wilder</h3>
-                    <div class="size-badge">Talla: L</div>
-                    <div class="price">170 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20la%20Polera%20Boxy%20Fit%20Café%20Wilder%20(170%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
+            <div class="product-card" data-category="zapatos">
+                <div class="product-img-wrapper">
+                    <img src="zapato-adidas-adizero.jpg" alt="Adidas Adizero Cyan">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Adidas Adizero Cyan</h3>
+                    <p class="product-size">40 EUR • 7 US • 25 cm</p>
+                    <div class="product-price">Bs. 400</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesan%20los%20Adidas%20Adizero%20Cyan%20Talla%2040%20EUR%20(400%20Bs)" class="btn-ws-card" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <div class="card" data-category="boxy">
-                <img src="polera-ploma.jpg" alt="Polera Boxy Fit Ploma I Don't Care">
-                <div class="card-info">
-                    <h3>Polera Boxy Fit Ploma I Don't Care</h3>
-                    <div class="size-badge">Talla: M</div>
-                    <div class="price">170 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20la%20Polera%20Boxy%20Fit%20Ploma%20I%20Don't%20Care%20(170%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
+            <div class="product-card" data-category="zapatos">
+                <div class="product-img-wrapper">
+                    <img src="zapato-lv-trainer.jpg" alt="Louis Vuitton Trainer">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Louis Vuitton Trainer</h3>
+                    <p class="product-size">40 EUR • 7 US • 25 cm</p>
+                    <div class="product-price">Bs. 350</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesan%20los%20Louis%20Vuitton%20Trainer%20Talla%2040%20EUR%20(350%20Bs)" class="btn-ws-card" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <div class="card" data-category="boxy">
-                <img src="polera-negra-23.jpg" alt="Polera Boxy Fit Negra Superiority 23">
-                <div class="card-info">
-                    <h3>Polera Boxy Fit Negra Superiority 23</h3>
-                    <div class="size-badge">Talla: L</div>
-                    <div class="price">170 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20la%20Polera%20Boxy%20Fit%20Negra%20Superiority%2023%20(170%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
+            <div class="product-card" data-category="zapatos">
+                <div class="product-img-wrapper">
+                    <img src="zapato-adidas-samba.jpg" alt="Adidas Samba OG White">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Adidas Samba OG White</h3>
+                    <p class="product-size">42 EUR • 8.5 US • 26.5 cm</p>
+                    <div class="product-price">Bs. 350</div>
+                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesan%20los%20Adidas%20Samba%20OG%20Talla%2042%20EUR%20(350%20Bs)" class="btn-ws-card" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <div class="card" data-category="boxy">
-                <img src="polera-negra-logo.jpg" alt="Polera Boxy Fit Negra DVIK Signature">
-                <div class="card-info">
-                    <h3>Polera Boxy Fit Negra DVIK Signature</h3>
-                    <div class="size-badge">Talla: L</div>
-                    <div class="price">170 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesa%20la%20Polera%20Boxy%20Fit%20Negra%20DVIK%20Signature%20(170%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
-                </div>
-            </div>
+        </div>
+    </section>
 
-            <!-- ZAPATOS DE MARCA -->
-            <div class="card" data-category="zapatos">
-                <img src="zapato-nb-blanco.jpg" alt="New Balance Running White">
-                <div class="card-info">
-                    <h3>New Balance Running White</h3>
-                    <div class="size-badge">43 EUR • 9.5 US • 27.5 cm</div>
-                    <div class="price">350 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesan%20los%20New%20Balance%20White%20Talla%2043%20EUR%20(350%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="card" data-category="zapatos">
-                <img src="zapato-nike-trail.jpg" alt="Nike ZoomX Trail Edition">
-                <div class="card-info">
-                    <h3>Nike ZoomX Trail Edition</h3>
-                    <div class="size-badge">40 EUR (7 US • 25 cm)<br>44 EUR (10 US • 28 cm)</div>
-                    <div class="price">350 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesan%20los%20Nike%20ZoomX%20Trail%20(350%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="card" data-category="zapatos">
-                <img src="zapato-nike-air2090.jpg" alt="Nike Air Max 2090 Pure White">
-                <div class="card-info">
-                    <h3>Nike Air Max 2090 Pure White</h3>
-                    <div class="size-badge">42 EUR • 8.5 US • 26.5 cm</div>
-                    <div class="price">350 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesan%20los%20Nike%20Air%20Max%202090%20Talla%2042%20EUR%20(350%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="card" data-category="zapatos">
-                <img src="zapato-adidas-adizero.jpg" alt="Adidas Adizero Pro Cyan/Yellow">
-                <div class="card-info">
-                    <h3>Adidas Adizero Pro Cyan/Yellow</h3>
-                    <div class="size-badge">40 EUR • 7 US • 25 cm</div>
-                    <div class="price">400 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesan%20los%20Adidas%20Adizero%20Cyan%20Talla%2040%20EUR%20(400%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="card" data-category="zapatos">
-                <img src="zapato-asics-rosado.jpg" alt="Asics S4 FFTurbo Pink Edition">
-                <div class="card-info">
-                    <h3>Asics S4 FFTurbo Pink Edition</h3>
-                    <div class="size-badge">42 EUR • 8.5 US • 26.5 cm</div>
-                    <div class="price">300 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesan%20los%20Asics%20S4%20Pink%20Talla%2042%20EUR%20(300%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="card" data-category="zapatos">
-                <img src="zapato-asics-amarillo.jpg" alt="Asics S4 FFTurbo Neon Yellow">
-                <div class="card-info">
-                    <h3>Asics S4 FFTurbo Neon Yellow</h3>
-                    <div class="size-badge">42 EUR • 8.5 US • 26.5 cm</div>
-                    <div class="price">300 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesan%20los%20Asics%20S4%20Yellow%20Talla%2042%20EUR%20(300%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="card" data-category="zapatos">
-                <img src="zapato-lv-trainer.jpg" alt="Louis Vuitton Trainer Black/Yellow">
-                <div class="card-info">
-                    <h3>Louis Vuitton Trainer Black/Yellow</h3>
-                    <div class="size-badge">40 EUR • 7 US • 25 cm</div>
-                    <div class="price">350 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesan%20los%20Louis%20Vuitton%20Trainer%20Talla%2040%20EUR%20(350%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="card" data-category="zapatos">
-                <img src="zapato-adidas-samba.jpg" alt="Adidas Samba OG Classic White">
-                <div class="card-info">
-                    <h3>Adidas Samba OG Classic White</h3>
-                    <div class="size-badge">42 EUR • 8.5 US • 26.5 cm</div>
-                    <div class="price">350 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesan%20los%20Adidas%20Samba%20OG%20Talla%2042%20EUR%20(350%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="card" data-category="zapatos">
-                <img src="zapato-nike-tn.jpg" alt="Nike Air Max Plus TN Gradient">
-                <div class="card-info">
-                    <h3>Nike Air Max Plus TN Gradient</h3>
-                    <div class="size-badge">42 EUR • 8.5 US • 26.5 cm</div>
-                    <div class="price">400 Bs</div>
-                    <a href="https://wa.me/59174186562?text=Hola!%20Me%20interesan%20los%20Nike%20Air%20Max%20Plus%20TN%20Talla%2042%20EUR%20(400%20Bs)" class="btn-ws" target="_blank">Pedir por WhatsApp</a>
-                </div>
-            </div>
-
+    <!-- BANNER SOBRE LA MARCA -->
+    <section id="nosotros" class="about-banner">
+        <div class="about-content">
+            <h4>Somos Prime Sport</h4>
+            <h3>Más que ropa, un estilo de vida.</h3>
+            <p>En Prime Sport seleccionamos cada prenda y cada par de zapatillas pensando en calidad, comodidad y diseño. Queremos que te sientas seguro y auténtico en cualquier lugar.</p>
+            <a href="https://wa.me/59174186562" class="btn-gold" target="_blank">Conoce más sobre nosotros</a>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer id="contacto">
-        <div class="logo-container" style="justify-content: center; margin-bottom: 15px;">
-            <img src="logo.jpg" alt="Prime Sport Logo" class="logo-img">
-            <span class="logo-text">PRIME SPORT</span>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo-container" style="margin-bottom: 15px;">
+                    <img src="logo.jpg" alt="Prime Sport" class="logo-img">
+                    <div class="logo-text-box">
+                        <span class="logo-title">PRIME <span>SPORT</span></span>
+                        <span class="logo-subtitle">Streetwear Premium</span>
+                    </div>
+                </div>
+                <p style="color: var(--text-gray); font-size: 0.8rem;">Moda streetwear y calzado exclusivo seleccionados con la máxima calidad en Bolivia.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Enlaces</h5>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#catalogo">Productos</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Atención al Cliente</h5>
+                <p style="color: var(--text-gray); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-brands fa-whatsapp" style="color:var(--gold-main);"></i> +591 74186562</p>
+                <p style="color: var(--text-gray); font-size: 0.85rem; margin-bottom: 8px;"><i class="fa-regular fa-clock" style="color:var(--gold-main);"></i> Lunes a Domingo: 9:00 - 21:00</p>
+                <p style="color: var(--text-gray); font-size: 0.85rem;"><i class="fa-solid fa-location-dot" style="color:var(--gold-main);"></i> Santa Cruz, Bolivia</p>
+            </div>
+            <div class="footer-col">
+                <h5>Síguenos</h5>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/j.primesport?igsh=MTh0b2I2YmNoeTQ5aQ%3D%3D&utm_source=qr" target="_blank" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/194xvb2WLN/?mibextid=wwXIfr" target="_blank" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://wa.me/59174186562" target="_blank" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
         </div>
-        <p style="color: #777;">Streetwear Premium • Vístete diferente</p>
-        
-        <div class="socials">
-            <a href="https://wa.me/59174186562" target="_blank">💬 WhatsApp (+591 74186562)</a>
-            <a href="https://www.instagram.com/j.primesport?igsh=MTh0b2I2YmNoeTQ5aQ%3D%3D&utm_source=qr" target="_blank">📸 Instagram (@j.primesport)</a>
-            <a href="https://www.facebook.com/share/194xvb2WLN/?mibextid=wwXIfr" target="_blank">📘 Facebook</a>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Prime Sport. Todos los derechos reservados.</p>
         </div>
-        
-        <p class="copyright">&copy; Prime Sport. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- SCRIPT DE FILTRADO DE CATEGORÍAS -->
+    <!-- FILTRADO JAVASCRIPT -->
     <script>
         function filterCategory(category) {
-            const cards = document.querySelectorAll('.card');
-            const buttons = document.querySelectorAll('.cat-btn');
+            const cards = document.querySelectorAll('.product-card');
+            const buttons = document.querySelectorAll('.tab-btn');
 
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
@@ -628,6 +850,5 @@
             });
         }
     </script>
-
 </body>
 </html>
